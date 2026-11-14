@@ -67,10 +67,13 @@ export async function pickPhotoFromGallery(): Promise<PhotoAsset | null> {
 
 export async function capturePhotoWithCamera(): Promise<PhotoAsset | null> {
   if (Platform.OS === 'web') {
-    Alert.alert(
-      'Cámara no disponible en web',
-      'Abre la app en Expo Go (Android o iOS) para capturar una fotografía con la cámara.',
-    );
+    const message =
+      'Abre la app en Expo Go (Android o iOS) para capturar una fotografía con la cámara y conceder el permiso correspondiente.';
+    if (typeof window !== 'undefined') {
+      window.alert(`Cámara no disponible en web\n\n${message}`);
+    } else {
+      Alert.alert('Cámara no disponible en web', message);
+    }
     return null;
   }
 
