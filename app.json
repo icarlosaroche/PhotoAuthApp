@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "PhotoAuthApp",
+    "slug": "PhotoAuthApp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "PhotoAuthApp necesita acceso a la galería para seleccionar fotografías.",
+          "cameraPermission": "PhotoAuthApp necesita acceso a la cámara para capturar fotografías."
+        }
+      ]
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "PhotoAuthApp necesita acceso a la cámara para capturar fotografías.",
+        "NSPhotoLibraryUsageDescription": "PhotoAuthApp necesita acceso a la galería para seleccionar fotografías."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "CAMERA",
+        "READ_MEDIA_IMAGES",
+        "READ_EXTERNAL_STORAGE"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
