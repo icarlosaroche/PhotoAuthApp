@@ -5,13 +5,11 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const shots = path.join(root, 'docs', 'screenshots');
-const repoUrl = process.env.GITHUB_REPO_URL ?? 'https://github.com/REEMPLAZAR-USUARIO/PhotoAuthApp';
+const repoUrl = process.env.GITHUB_REPO_URL ?? 'https://github.com/icarlosaroche/PhotoAuthApp';
 
 const images = [
-  ['01-inicio-sesion.png', 'Inicio de sesión con correo electrónico y contraseña'],
-  ['02-pantalla-principal.png', 'Pantalla principal (sesión autenticada, sin fotografía)'],
-  ['03-seleccion-imagen.png', 'Selección de imagen desde galería y vista previa'],
-  ['04-camara.png', 'Acción de cámara en la pantalla principal (usar Expo Go en dispositivo para la captura nativa)'],
+  ['01-inicio-sesion.jpg', 'Inicio de sesión en el dispositivo (Expo Go)'],
+  ['02-pantalla-principal-camara.jpg', 'Pantalla principal con fotografía capturada con la cámara'],
 ];
 
 const pdf = await PDFDocument.create();
@@ -64,13 +62,16 @@ for (const [file, caption] of images) {
   const page = pdf.addPage([612, 792]);
   page.drawText(caption, { x: 40, y: 750, size: 12, font: fontBold, color: rgb(0.06, 0.3, 0.5) });
   const bytes = await readFile(path.join(shots, file));
-  const png = await pdf.embedPng(bytes);
+  const image = file.toLowerCase().endsWith('.png')
+    ? await pdf.embedPng(bytes)
+    : await pdf.embedJpg(bytes);
   const maxW = 532;
   const maxH = 680;
-  const scale = Math.min(maxW / png.width, maxH / png.height);
-  const w = png.width * scale;
-  const h = png.height * scale;
-  page.drawImage(png, { x: 40, y: 740 - h - 16, width: w, height: h });
+  const scale = Math.min(maxW / image.width, maxH / image.height);
+  const w = image.width * scale;
+  const h = image.height * scale;
+  const x = (612 - w) / 2;
+  page.drawImage(image, { x, y: 740 - h - 16, width: w, height: h });
 }
 
 const out = path.join(root, 'docs', 'Entrega-PhotoAuthApp-Luis-Carlos-Contreras-Aroche.pdf');

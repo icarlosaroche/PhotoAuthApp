@@ -82,11 +82,7 @@ src/
 
 ## Evidencias
 
-Las capturas están en `docs/screenshots/` y en `docs/Entrega-PhotoAuthApp-Luis-Carlos-Contreras-Aroche.pdf`:
+Las capturas del dispositivo están en `docs/screenshots/` y en `docs/Entrega-PhotoAuthApp-Luis-Carlos-Contreras-Aroche.pdf`:
 
-- `01-inicio-sesion.png` — formulario de inicio de sesión
-- `02-pantalla-principal.png` — pantalla principal protegida
-- `03-seleccion-imagen.png` — fotografía en la vista previa (galería)
-- `04-camara.png` — pantalla principal con la acción de cámara
-
-La captura nativa con la cámara del teléfono se realiza en Expo Go. En web, la app informa que la cámara requiere un dispositivo físico y solicita/verifica permisos en Android e iOS antes de abrirla.
+- `01-inicio-sesion.jpg` — inicio de sesión en Expo Go
+- `02-pantalla-principal-camara.jpg` — pantalla principal con una fotografía capturada con la cámara
