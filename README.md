@@ -1,6 +1,7 @@
 # PhotoAuthApp
 
-**Estudiante:** Luis Carlos Contreras Aroche
+**Estudiante:** Luis Carlos Contreras Aroche  
+**Repositorio:** https://github.com/icarlosaroche/PhotoAuthApp
 
 Aplicación móvil de autenticación y gestión de fotografías construida con **React Native**, **Expo** y **TypeScript**. Un usuario inicia sesión con correo y contraseña mediante **Supabase**; solo con una sesión válida puede elegir una imagen de la galería o capturarla con la cámara, cambiarla o quitarla de la vista previa.
 
